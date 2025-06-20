@@ -1,0 +1,48 @@
+CREATE TABLE USUARIO(
+    gmail varchar(40) primary key not null,
+    senha varchar(10) not null,
+    nome varchar(20)
+    );
+    
+CREATE TABLE PROFESSOR(
+    gmailprof varchar(40) primary key not null,
+    senha varchar(10) not null,
+    nome varchar(40),
+    cpf bigint not null
+    
+    );
+    
+CREATE TABLE ALUNO(
+    gmailaluno varchar(40) primary key not null,
+    senha varchar(10) not null,
+    cpf bigint not null,
+    nome varchar(40) not null
+    );
+    
+ CREATE TABLE CONTO(
+     id bigint auto_increment primary key,
+     titulo varchar(30) not null,
+     descricao varchar(200),
+     arquivo varchar(255),
+     likes bigint
+     
+     );
+    
+    
+ CREATE TABLE ESCOLA(
+     id bigint primary key auto_increment,
+     idcont bigint,
+     foreign key(idcont) references CONTO(id)
+     );
+     
+     
+ CREATE TABLE PROF_RESP(
+     gmail varchar(40) primary key not null,
+     senha varchar(10) not null,
+     idcont bigint,
+     idesc bigint,
+     cpf bigint not null,
+     nome varchar(30) not null,
+     foreign key (idcont) references CONTO(id),
+     foreign key (idesc) references ESCOLA(id)
+     );
